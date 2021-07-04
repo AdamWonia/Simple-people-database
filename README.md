@@ -1,1 +1,1 @@
-# Simple-people-base
+# Simple people database
