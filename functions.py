@@ -43,7 +43,7 @@ def input_str(option1=None, option2=None):
                 print("You put invalid data, please try again")
 
         if option1 is not None or option2 is not None:
-            input_data = input_data.capitalize().strip()
+            input_data = input_data.upper().strip()
             if input_data.isalpha() and (input_data == option1 or input_data == option2):
                 break
             else:
