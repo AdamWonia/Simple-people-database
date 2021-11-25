@@ -21,4 +21,4 @@ File functions.py contains the created functions that are used in the program.
 File main.py constitutes the main file that is run.
 
 The author assumes no responsibility for accidental deletion or renaming of
-an important folder to the user. Please be careful when using this program.
+an important folder to the user. Please be careful when using this program. 
