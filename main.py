@@ -9,7 +9,7 @@ root = Tk()
 root.withdraw()
 root.attributes('-topmost', True)
 
-print("What would like to do?")
+print("What would like to do ?")
 print("1 - Add new person")
 print("2 - Rename existing person")
 print("3 - Remove person")
