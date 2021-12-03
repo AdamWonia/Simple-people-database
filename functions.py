@@ -1,4 +1,5 @@
 def select_option(lb, ub):
+    """ add docstring """
     while True:
         option = input("Insert option: ")
         if option.isnumeric() and int(option) in range(lb, ub+1):
@@ -10,6 +11,7 @@ def select_option(lb, ub):
 
 
 def basic_person_details():
+    """ add docstring """
     print("Insert name: ")
     name_in = input_str().strip()
     print("Insert surname: ")
@@ -23,6 +25,7 @@ def basic_person_details():
 
 
 def input_int():
+    """ add docstring """
     while True:
         try:
             input_data = int(input())
@@ -34,6 +37,7 @@ def input_int():
 
 
 def input_str(option1=None, option2=None):
+    """ add docstring """
     while True:
         input_data = input()
         if option1 is None and option2 is None:

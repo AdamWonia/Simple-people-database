@@ -33,50 +33,77 @@ if __name__ == "__main__":
         if chosen_person == 1:
             print("Chosen option: {} - {}".format(chosen_person, "Employee"))
 
-            # Insert basic person information (name, surname, age and gender):
-            basic_info = basic_person_details()
-            # Insert specified person information:
+            # maybe add it into method in class Employee?
+
+            # Insert person information:
+            print("Insert name: ")
+            name = input_str().strip()
+            print("Insert surname: ")
+            surname = input_str().strip()
+            print("Insert age: ")
+            age = input_int()
+            print("Insert gender [M or F]: ")
+            gender = input_str('M', 'F').strip()
             print("Insert position: ")
-            position_in = input_str()
+            position = input_str().strip()
             print("Insert specialization: ")
-            spec_in = input_str()
+            spec = input_str().strip()
 
             # Creating employee:
-            employee = Employee(basic_info[0], basic_info[1], basic_info[2], basic_info[3], position_in, spec_in)
-            employee.showEmployeeDetails()
+            employee = Employee(name, surname, age, gender, position, spec)
+            # Show entered data:
+            employee.show_employee_details()
 
         if chosen_person == 2:
             print("Chosen option: {} - {}".format(chosen_person, "Student"))
 
-            # Insert basic person information (name, surname, age and gender):
-            basic_info = basic_person_details()
-            # Insert specified person information:
+            # Insert person information:
+            print("Insert name: ")
+            name = input_str().strip()
+            print("Insert surname: ")
+            surname = input_str().strip()
+            print("Insert age: ")
+            age = input_int()
+            print("Insert gender [M or F]: ")
+            gender = input_str('M', 'F').strip()
             print("Insert education stage: ")
-            edu_stg_in = input_str()
+            edu_stg = input_str().strip()
             print("Insert favourite subject: ")
-            fav_sub_in = input_str()
+            fav_sub = input_str().strip()
             print("Insert passion: ")
-            passion_in = input_str()
+            passion = input_str().strip()
 
             # Creating student:
-            student = Student(basic_info[0], basic_info[1], basic_info[2],
-                              basic_info[3], edu_stg_in, fav_sub_in, passion_in)
-            student.showStudentDetails()
+            student = Student(name, surname, age, gender, edu_stg, fav_sub, passion)
+            # Show entered data:
+            student.show_student_details()
 
         if chosen_person == 3:
             print("Chosen option: {} - {}".format(chosen_person, "Child"))
 
-            # Insert basic person information (name, surname, age and gender):
-            basic_info = basic_person_details()
-            # Insert specified person information:
+            # Insert person information:
+            print("Insert name: ")
+            name = input_str().strip()
+            print("Insert surname: ")
+            surname = input_str().strip()
+            print("Insert age: ")
+            age = input_int()
+            print("Insert gender [M or F]: ")
+            gender = input_str('M', 'F').strip()
             print("Insert favourite toy: ")
-            fav_toy_in = input_str()
+            fav_toy = input_str().strip()
             print("Insert favourite fable: ")
-            fav_fable_in = input_str()
+            fav_fable = input_str().strip()
 
             # Creating child:
-            child = Child(basic_info[0], basic_info[1], basic_info[2], basic_info[3], fav_toy_in, fav_fable_in)
-            child.showChildDetails()
+            child = Child(name, surname, age, gender, fav_toy, fav_fable)
+            # Show entered data:
+            child.show_child_details()
+
+
+
+
+
 
         # Saving person details to file:
         print("Do you want to save the person's data to a file? [Y or N]")
@@ -113,7 +140,8 @@ if __name__ == "__main__":
                     if chosen_person == 1:
                         data_to_write = ["Person: Employee", "Name: " + name_in, "Surname: " + surname_in,
                                          "Age: " + str(age_in),
-                                         "Gender: " + gender_in, "Position: " + position_in, "Specialization: " + spec_in]
+                                         "Gender: " + gender_in, "Position: " + position_in,
+                                         "Specialization: " + spec_in]
                         for data in data_to_write:
                             f.write(data + "\n")
 
@@ -217,7 +245,8 @@ if __name__ == "__main__":
                             for data in data_to_write:
                                 f.write(data + "\n")
 
-                        print("Folder: '" + os.path.basename(person_dir_path) + "' and file 'person_details.txt' created!")
+                        print("Folder: '" + os.path.basename(
+                            person_dir_path) + "' and file 'person_details.txt' created!")
                         f.close()
                         exit()
 
@@ -248,7 +277,8 @@ if __name__ == "__main__":
             else:
                 os.rename(chosen_path, new_fold_dir)
                 print(
-                    "Folder '" + os.path.basename(chosen_path) + "' renamed to: '" + os.path.basename(new_fold_dir) + "'!")
+                    "Folder '" + os.path.basename(chosen_path) + "' renamed to: '" + os.path.basename(
+                        new_fold_dir) + "'!")
             exit()
 
         except FileNotFoundError:

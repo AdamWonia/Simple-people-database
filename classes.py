@@ -1,3 +1,6 @@
+from functions import input_str, input_int
+
+
 class Person():
     def __init__(self, name, surname, age, gender):
         self.name = name
@@ -5,11 +8,14 @@ class Person():
         self.age = age
         self.gender = gender
 
-    def showPersonDetails(self):
+    def show_person_details(self):
         print("Name: " + self.name)
         print("Surname: " + self.surname)
         print("Age: " + str(self.age))
         print("Gender: " + self.gender)
+
+    def __str__(self):
+        pass
 
 
 class Employee(Person):
@@ -18,7 +24,7 @@ class Employee(Person):
         self.position = position
         self.specialization = specialization
 
-    def showEmployeeDetails(self):
+    def show_employee_details(self):
         super().showPersonDetails()
         print("Position: " + self.position)
         print("Specialization: " + self.specialization)
@@ -31,7 +37,7 @@ class Student(Person):
         self.fav_subject = fav_subject
         self.passion = passion
 
-    def showStudentDetails(self):
+    def show_student_details(self):
         super().showPersonDetails()
         print("Education stage: " + self.education_stage)
         print("Favourite subject: " + self.fav_subject)
@@ -44,7 +50,7 @@ class Child(Person):
         self.fav_toy = fav_toy
         self.fav_fable = fav_fable
 
-    def showChildDetails(self):
+    def show_child_details(self):
         super().showPersonDetails()
         print("Favourite toy: " + self.fav_toy)
         print("Favourite fable: " + self.fav_fable)
