@@ -32,74 +32,30 @@ if __name__ == "__main__":
         # Chosen person:
         if chosen_person == 1:
             print("Chosen option: {} - {}".format(chosen_person, "Employee"))
-
-            # maybe add it into method in class Employee?
-
-            # Insert person information:
-            print("Insert name: ")
-            name = input_str().strip()
-            print("Insert surname: ")
-            surname = input_str().strip()
-            print("Insert age: ")
-            age = input_int()
-            print("Insert gender [M or F]: ")
-            gender = input_str('M', 'F').strip()
-            print("Insert position: ")
-            position = input_str().strip()
-            print("Insert specialization: ")
-            spec = input_str().strip()
-
             # Creating employee:
-            employee = Employee(name, surname, age, gender, position, spec)
+            employee = Employee()
+            # Insert Employee information:
+            employee.get_employee_details()
             # Show entered data:
             employee.show_employee_details()
 
         if chosen_person == 2:
             print("Chosen option: {} - {}".format(chosen_person, "Student"))
-
-            # Insert person information:
-            print("Insert name: ")
-            name = input_str().strip()
-            print("Insert surname: ")
-            surname = input_str().strip()
-            print("Insert age: ")
-            age = input_int()
-            print("Insert gender [M or F]: ")
-            gender = input_str('M', 'F').strip()
-            print("Insert education stage: ")
-            edu_stg = input_str().strip()
-            print("Insert favourite subject: ")
-            fav_sub = input_str().strip()
-            print("Insert passion: ")
-            passion = input_str().strip()
-
             # Creating student:
-            student = Student(name, surname, age, gender, edu_stg, fav_sub, passion)
+            student = Student()
+            # Insert student information:
+            student.get_student_detail()
             # Show entered data:
             student.show_student_details()
 
         if chosen_person == 3:
             print("Chosen option: {} - {}".format(chosen_person, "Child"))
-
-            # Insert person information:
-            print("Insert name: ")
-            name = input_str().strip()
-            print("Insert surname: ")
-            surname = input_str().strip()
-            print("Insert age: ")
-            age = input_int()
-            print("Insert gender [M or F]: ")
-            gender = input_str('M', 'F').strip()
-            print("Insert favourite toy: ")
-            fav_toy = input_str().strip()
-            print("Insert favourite fable: ")
-            fav_fable = input_str().strip()
-
             # Creating child:
-            child = Child(name, surname, age, gender, fav_toy, fav_fable)
+            child = Child()
+            # Insert person information:
+            child.get_child_details()
             # Show entered data:
             child.show_child_details()
-
 
 
 
