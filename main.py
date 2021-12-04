@@ -27,7 +27,6 @@ if __name__ == "__main__":
 
         # Choosing the person to add:
         chosen_person = select_option(1, 3)
-        basic_info = []
 
         # Chosen person:
         if chosen_person == 1:
@@ -57,11 +56,9 @@ if __name__ == "__main__":
             # Show entered data:
             child.show_child_details()
 
-
-
-
-
         # Saving person details to file:
+        # maybe make method save in Person?
+
         print("Do you want to save the person's data to a file? [Y or N]")
         save_option = input_str('Y', 'N')
 
@@ -69,12 +66,6 @@ if __name__ == "__main__":
             print("Choose a directory to save: ")
             print("Note: A folder and file will be created with the person data")
             time.sleep(2)
-
-            # Extract basic person data to the relevant variables:
-            name_in = basic_info[0]
-            surname_in = basic_info[1]
-            age_in = basic_info[2]
-            gender_in = basic_info[3]
 
             # Choosing directory:
             try:
@@ -85,8 +76,11 @@ if __name__ == "__main__":
                 print("Chosen path: " + chosen_path + "\n")
 
                 # Create person folder in chosen directory:
+                # which person? employ, student, child?
+
                 person_dir = name_in + " " + surname_in
                 person_dir_path = chosen_path + "/" + person_dir
+
                 if not os.path.isdir(person_dir_path):
                     # Create folder and file.txt:
                     os.makedirs(person_dir_path)
@@ -206,12 +200,23 @@ if __name__ == "__main__":
                         f.close()
                         exit()
 
-                if save_option == 'N':
-                    exit()
-
             except FileNotFoundError:
                 print("File not found, please try again")
 
+        else:
+            exit()
+
+
+
+
+
+
+
+
+
+
+
+    # Other menu options for later
     if start_option == 2:
         print("Chosen option: {} - {}".format(start_option, "Rename existing person"))
         print("Select folder to rename:")
