@@ -32,53 +32,21 @@ class Person:
         print("Age: " + str(self.age))
         print("Gender: " + self.gender)
 
-
-class Employee(Person):
-    def __init__(self):
-        super().__init__()
-        self.position = "position"
-        self.specialization = "specialization"
-
-    def __str__(self):
-        return "Employee"
-
-    def get_employee_details(self):
-        """ add docstring """
-        super()._get_person_details()
-        print("Insert position: ")
-        self.position = input_str().strip()
-        print("Insert specialization: ")
-        self.specialization = input_str().strip()
-
-    def show_employee_details(self):
-        """ add docstring """
-        super()._show_person_details()
-        print("Position: " + self.position)
-        print("Specialization: " + self.specialization)
-
-    def save_employee_to_file(self, save_option):
+    def _save_details_to_file(self, save_option, data_to_write):
         """ add docstring """
         if save_option == 'Y':
             print("Choose a directory to save: ")
             print("Note: A folder and file will be created with the person data")
             time.sleep(2)
-
             # Choosing directory:
             try:
                 chosen_path = fd.askdirectory()
                 if chosen_path == '':
                     raise FileNotFoundError
-
                 print("Chosen path: " + chosen_path + "\n")
                 # Create person folder in chosen directory:
                 person_dir = self.name + " " + self.surname
                 person_dir_path = chosen_path + "/" + person_dir
-                # Data to save in file as list
-                data_to_write = [f"Person: {str(Employee)}", f"Name: {self.name}", f"Surname: {self.surname}",
-                                 f"Age: {str(self.age)}",
-                                 f"Gender: {self.gender}", f"Position: {self.position}",
-                                 f"Specialization: {self.specialization}"]
-
                 # Create folder and file.txt if not exist:
                 if not os.path.isdir(person_dir_path):
                     os.makedirs(person_dir_path)
@@ -87,7 +55,6 @@ class Employee(Person):
                     # Insert person details into file:
                     for data in data_to_write:
                         f.write(data + "\n")
-
                     print("Folder: '" + person_dir + "' and file 'person_details.txt' created!")
                     f.close()
                 else:
@@ -95,7 +62,6 @@ class Employee(Person):
                     print("Folder exist! Do you want to overwrite it? [Y or N]")
                     print("If you select 'N' a folder with a suffix of '_' will be created")
                     folder_option = input_str('Y', 'N')
-
                     # Override data in folder option:
                     if folder_option == 'Y':
                         # Remove all files in path:
@@ -137,11 +103,42 @@ class Employee(Person):
                             person_dir_path) + "' and file 'person_details.txt' created!")
                         f.close()
                         exit()
-
             except FileNotFoundError:
                 print("File not found, please try again")
         else:
             exit()
+
+
+class Employee(Person):
+    def __init__(self):
+        super().__init__()
+        self.position = "position"
+        self.specialization = "specialization"
+
+    def __str__(self):
+        return "Employee"
+
+    def get_employee_details(self):
+        """ add docstring """
+        super()._get_person_details()
+        print("Insert position: ")
+        self.position = input_str().strip()
+        print("Insert specialization: ")
+        self.specialization = input_str().strip()
+
+    def show_employee_details(self):
+        """ add docstring """
+        super()._show_person_details()
+        print("Position: " + self.position)
+        print("Specialization: " + self.specialization)
+
+    def save_employee_to_file(self, save_option):
+        # Data to save in file as list
+        data_to_write = [f"Person: {Employee.__str__(self)}", f"Name: {self.name}", f"Surname: {self.surname}",
+                         f"Age: {str(self.age)}",
+                         f"Gender: {self.gender}", f"Position: {self.position}",
+                         f"Specialization: {self.specialization}"]
+        super()._save_details_to_file(save_option, data_to_write)
 
 
 class Student(Person):
@@ -170,12 +167,23 @@ class Student(Person):
         print("Favourite subject: " + self.favourite_subject)
         print("Passion: " + self.passion)
 
+    def save_student_to_file(self, save_option):
+        # Data to save in file as list
+        data_to_write = [f"Person: {Student.__str__(self)}", f"Name: {self.name}", f"Surname: {self.surname}",
+                         f"Age: {str(self.age)}",
+                         f"Gender: {self.gender}", f"Education stage: {self.education_stage}",
+                         f"Favourite subject: {self.favourite_subject}", f"Passion: {self.passion}"]
+        super()._save_details_to_file(save_option, data_to_write)
+
 
 class Child(Person):
     def __init__(self):
         super().__init__()
         self.favourite_toy = "favourite toy"
         self.favourite_fable = "favourite fable"
+
+    def __str__(self):
+        return f"{self.name}"
 
     def get_child_details(self):
         """ add docstring """
@@ -190,3 +198,10 @@ class Child(Person):
         super()._show_person_details()
         print("Favourite toy: " + self.favourite_toy)
         print("Favourite fable: " + self.favourite_fable)
+
+    def save_child_to_file(self, save_option):
+        # Data to save in file as list
+        data_to_write = [f"Person: {Child.__str__(self)}", f"Name: {self.name}", f"Surname: {self.surname}",
+                         f"Age: {str(self.age)}", f"Gender: {self.gender}",
+                         f"Favourite toy: {self.favourite_toy}", f"Favourite fable: {self.favourite_toy}"]
+        super()._save_details_to_file(save_option, data_to_write)

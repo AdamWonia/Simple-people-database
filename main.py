@@ -42,7 +42,7 @@ if __name__ == "__main__":
             save_option = input_str('Y', 'N')
             employee.save_employee_to_file(save_option)
 
-
+            exit()
 
 
 
