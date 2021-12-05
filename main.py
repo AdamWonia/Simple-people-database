@@ -42,192 +42,31 @@ if __name__ == "__main__":
             save_option = input_str('Y', 'N')
             employee.save_employee_to_file(save_option)
 
-            exit()
-
-
-
-
-
-
-
-
-
-
-
-
-
         if chosen_person == 2:
             print("Chosen option: {} - {}".format(chosen_person, "Student"))
-            # Creating student:
+            # Creating employee:
             student = Student()
-            # Insert student information:
+            # Insert Employee information:
             student.get_student_detail()
             # Show entered data:
             student.show_student_details()
+            # Saving Employee details to file
+            print("Do you want to save the person's data to a file? [Y or N]")
+            save_option = input_str('Y', 'N')
+            student.save_student_to_file(save_option)
 
         if chosen_person == 3:
             print("Chosen option: {} - {}".format(chosen_person, "Child"))
-            # Creating child:
+            # Creating employee:
             child = Child()
-            # Insert person information:
+            # Insert Employee information:
             child.get_child_details()
             # Show entered data:
             child.show_child_details()
-
-        # Saving person details to file:
-        print("Do you want to save the person's data to a file? [Y or N]")
-        save_option = input_str('Y', 'N')
-
-        if save_option == 'Y':
-            print("Choose a directory to save: ")
-            print("Note: A folder and file will be created with the person data")
-            time.sleep(2)
-
-            # Choosing directory:
-            try:
-                chosen_path = fd.askdirectory()
-                if chosen_path == '':
-                    raise FileNotFoundError
-
-                print("Chosen path: " + chosen_path + "\n")
-
-                # Create person folder in chosen directory:
-                # which person? employ, student, child?
-
-                person_dir = name_in + " " + surname_in
-                person_dir_path = chosen_path + "/" + person_dir
-
-                if not os.path.isdir(person_dir_path):
-                    # Create folder and file.txt:
-                    os.makedirs(person_dir_path)
-                    file_path = person_dir_path + "/person_details.txt"
-                    f = open(file_path, "w")
-                    # Insert person details into file:
-                    if chosen_person == 1:
-                        data_to_write = ["Person: Employee", "Name: " + name_in, "Surname: " + surname_in,
-                                         "Age: " + str(age_in),
-                                         "Gender: " + gender_in, "Position: " + position_in,
-                                         "Specialization: " + spec_in]
-                        for data in data_to_write:
-                            f.write(data + "\n")
-
-                    if chosen_person == 2:
-                        data_to_write = ["Person: Student", "Name: " + name_in, "Surname: " + surname_in,
-                                         "Age: " + str(age_in),
-                                         "Gender: " + gender_in, "Education stage: " + edu_stg_in,
-                                         "Favourite subject: " + fav_sub_in, "Passion: " + passion_in]
-                        for data in data_to_write:
-                            f.write(data + "\n")
-
-                    if chosen_person == 3:
-                        data_to_write = ["Person: Child", "Name: " + name_in, "Surname: " + surname_in,
-                                         "Age: " + str(age_in), "Gender: " + gender_in,
-                                         "Favourite toy: " + fav_toy_in, "Favourite fable: " + fav_fable_in]
-                        for data in data_to_write:
-                            f.write(data + "\n")
-
-                    print("Folder: '" + person_dir + "' and file 'person_details.txt' created!")
-                    f.close()
-                else:
-                    print("Folder exist! Do you want to overwrite it? [Y or N]")
-                    print("If you select 'N' a folder with a suffix of '_' will be created")
-                    folder_option = input_str('Y', 'N')
-
-                    if folder_option == 'Y':
-                        # Remove all files in path:
-                        file_list = os.listdir(person_dir_path)
-                        for element in file_list:
-                            os.remove(person_dir_path + "/" + element)
-                        # Delete existing folder after cleaning it:
-                        os.rmdir(person_dir_path)
-                        # Create new folder with person details:
-                        # Create folder and file.txt:
-                        os.makedirs(person_dir_path)
-                        file_path = person_dir_path + "/person_details.txt"
-                        f = open(file_path, "w")
-                        # Insert person details into file:
-                        if chosen_person == 1:
-                            data_to_write = ["Person: Employee", "Name: " + name_in, "Surname: " + surname_in,
-                                             "Age: " + str(age_in),
-                                             "Gender: " + gender_in, "Position: " + position_in,
-                                             "Specialization: " + spec_in]
-                            for data in data_to_write:
-                                f.write(data + "\n")
-
-                        if chosen_person == 2:
-                            data_to_write = ["Person: Student", "Name: " + name_in, "Surname: " + surname_in,
-                                             "Age: " + str(age_in),
-                                             "Gender: " + gender_in, "Education stage: " + edu_stg_in,
-                                             "Favourite subject: " + fav_sub_in, "Passion: " + passion_in]
-                            for data in data_to_write:
-                                f.write(data + "\n")
-
-                        if chosen_person == 3:
-                            data_to_write = ["Person: Child", "Name: " + name_in, "Surname: " + surname_in,
-                                             "Age: " + str(age_in),
-                                             "Gender: " + gender_in, "Education stage: " + edu_stg_in,
-                                             "Favourite toy: " + fav_toy_in, "Favourite fable: " + fav_fable_in]
-                            for data in data_to_write:
-                                f.write(data + "\n")
-
-                        print("Folder: '" + person_dir + "' and file 'person_details.txt' created!")
-                        f.close()
-                        exit()
-
-                    if folder_option == 'N':
-                        # Create folder with suffix '_' and file.txt:
-                        look_path = os.path.dirname(person_dir_path)
-                        list_files = os.listdir(look_path)
-
-                        for act_dir in list_files:
-                            if act_dir == person_dir:
-                                person_dir_path = look_path + "/" + act_dir + '_'
-
-                        os.makedirs(person_dir_path)
-                        file_path = person_dir_path + "/person_details.txt"
-                        f = open(file_path, "w")
-                        # Insert person details into file:
-                        if chosen_person == 1:
-                            data_to_write = ["Person: Employee", "Name: " + name_in, "Surname: " + surname_in,
-                                             "Age: " + str(age_in),
-                                             "Gender: " + gender_in, "Position: " + position_in,
-                                             "Specialization: " + spec_in]
-                            for data in data_to_write:
-                                f.write(data + "\n")
-
-                        if chosen_person == 2:
-                            data_to_write = ["Person: Student", "Name: " + name_in, "Surname: " + surname_in,
-                                             "Age: " + str(age_in),
-                                             "Gender: " + gender_in, "Education stage: " + edu_stg_in,
-                                             "Favourite subject: " + fav_sub_in, "Passion: " + passion_in]
-                            for data in data_to_write:
-                                f.write(data + "\n")
-
-                        if chosen_person == 3:
-                            data_to_write = ["Person: Child", "Name: " + name_in, "Surname: " + surname_in,
-                                             "Age: " + str(age_in),
-                                             "Gender: " + gender_in, "Education stage: " + edu_stg_in,
-                                             "Favourite toy: " + fav_toy_in, "Favourite fable: " + fav_fable_in]
-                            for data in data_to_write:
-                                f.write(data + "\n")
-
-                        print("Folder: '" + os.path.basename(
-                            person_dir_path) + "' and file 'person_details.txt' created!")
-                        f.close()
-                        exit()
-
-            except FileNotFoundError:
-                print("File not found, please try again")
-
-        else:
-            exit()
-
-
-
-
-
-
-
+            # Saving Employee details to file
+            print("Do you want to save the person's data to a file? [Y or N]")
+            save_option = input_str('Y', 'N')
+            child.save_child_to_file(save_option)
 
 
 
