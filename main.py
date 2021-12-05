@@ -1,5 +1,5 @@
-from classes import *
-from functions import *
+from person_classes import *
+from control_input import *
 from tkinter import Tk, filedialog as fd
 import time
 import os
