@@ -37,6 +37,24 @@ if __name__ == "__main__":
             employee.get_employee_details()
             # Show entered data:
             employee.show_employee_details()
+            # Saving Employee details to file
+            print("Do you want to save the person's data to a file? [Y or N]")
+            save_option = input_str('Y', 'N')
+            employee.save_employee_to_file(save_option)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         if chosen_person == 2:
             print("Chosen option: {} - {}".format(chosen_person, "Student"))
@@ -57,8 +75,6 @@ if __name__ == "__main__":
             child.show_child_details()
 
         # Saving person details to file:
-        # maybe make method save in Person?
-
         print("Do you want to save the person's data to a file? [Y or N]")
         save_option = input_str('Y', 'N')
 
