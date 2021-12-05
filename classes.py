@@ -1,6 +1,6 @@
 from functions import input_str, input_int
 import time
-from tkinter import Tk, filedialog as fd
+from tkinter import filedialog as fd
 import os
 
 
@@ -15,7 +15,7 @@ class Person:
         return f"{self.name}"
 
     def _get_person_details(self):
-        """ add docstring """
+        """ Method allows to insert the basic person details (name, surname, age, gender). """
         print("Insert name: ")
         self.name = input_str().strip()
         print("Insert surname: ")
@@ -26,14 +26,14 @@ class Person:
         self.gender = input_str('M', 'F').strip()
 
     def _show_person_details(self):
-        """ add docstring """
+        """ Method shows the person details. """
         print("Name: " + self.name)
         print("Surname: " + self.surname)
         print("Age: " + str(self.age))
         print("Gender: " + self.gender)
 
     def _save_details_to_file(self, save_option, data_to_write):
-        """ add docstring """
+        """ Method allows to save the person details into chosen directory. """
         if save_option == 'Y':
             print("Choose a directory to save: ")
             print("Note: A folder and file will be created with the person data")
@@ -119,7 +119,7 @@ class Employee(Person):
         return "Employee"
 
     def get_employee_details(self):
-        """ add docstring """
+        """ Method allows to insert the employee details (name, surname, age, gender, position, specialization). """
         super()._get_person_details()
         print("Insert position: ")
         self.position = input_str().strip()
@@ -127,13 +127,13 @@ class Employee(Person):
         self.specialization = input_str().strip()
 
     def show_employee_details(self):
-        """ add docstring """
+        """ Method shows the employee details. """
         super()._show_person_details()
         print("Position: " + self.position)
         print("Specialization: " + self.specialization)
 
     def save_employee_to_file(self, save_option):
-        # Data to save in file as list
+        """ Method allows to save the employee details into chosen directory. """
         data_to_write = [f"Person: {Employee.__str__(self)}", f"Name: {self.name}", f"Surname: {self.surname}",
                          f"Age: {str(self.age)}",
                          f"Gender: {self.gender}", f"Position: {self.position}",
@@ -152,7 +152,8 @@ class Student(Person):
         return "Student"
 
     def get_student_detail(self):
-        """ add docstring """
+        """ Method allows to insert the student details (name, surname, age, gender, education stage
+        favourite subject, passion). """
         super()._get_person_details()
         print("Insert education stage: ")
         self.education_stage = input_str().strip()
@@ -162,13 +163,14 @@ class Student(Person):
         self.passion = input_str().strip()
 
     def show_student_details(self):
+        """ Method shows the student details. """
         super()._show_person_details()
         print("Education stage: " + self.education_stage)
         print("Favourite subject: " + self.favourite_subject)
         print("Passion: " + self.passion)
 
     def save_student_to_file(self, save_option):
-        # Data to save in file as list
+        """ Method allows to save the student details into chosen directory. """
         data_to_write = [f"Person: {Student.__str__(self)}", f"Name: {self.name}", f"Surname: {self.surname}",
                          f"Age: {str(self.age)}",
                          f"Gender: {self.gender}", f"Education stage: {self.education_stage}",
@@ -186,7 +188,8 @@ class Child(Person):
         return f"{self.name}"
 
     def get_child_details(self):
-        """ add docstring """
+        """ Method allows to insert the student details (name, surname, age, gender, favourite toy, favourite fable).
+        """
         super()._get_person_details()
         print("Insert favourite toy: ")
         self.favourite_toy = input_str().strip()
@@ -194,13 +197,13 @@ class Child(Person):
         self.favourite_fable = input_str().strip()
 
     def show_child_details(self):
-        """ add docstring """
+        """ Method shows the child details. """
         super()._show_person_details()
         print("Favourite toy: " + self.favourite_toy)
         print("Favourite fable: " + self.favourite_fable)
 
     def save_child_to_file(self, save_option):
-        # Data to save in file as list
+        """ Method allows to save the child details into chosen directory. """
         data_to_write = [f"Person: {Child.__str__(self)}", f"Name: {self.name}", f"Surname: {self.surname}",
                          f"Age: {str(self.age)}", f"Gender: {self.gender}",
                          f"Favourite toy: {self.favourite_toy}", f"Favourite fable: {self.favourite_toy}"]

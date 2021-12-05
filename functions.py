@@ -1,8 +1,13 @@
 def select_option(lb, ub):
-    """ add docstring """
+    """Returns the selected integer type option between lb and ub. Otherwise shows an error message.
+
+            Parameters:
+                lb (lower bound): Lower limit of the integer type for options.
+                ub (upper bound): Upper limit of the integer type for options.
+    """
     while True:
         option = input("Insert option: ")
-        if option.isnumeric() and int(option) in range(lb, ub+1):
+        if option.isnumeric() and (int(option) in range(lb, ub + 1)):
             break
         else:
             print("You put invalid option, insert number between {} and {}".format(lb, ub))
@@ -10,22 +15,8 @@ def select_option(lb, ub):
     return int(option)
 
 
-def basic_person_details():
-    """ add docstring """
-    print("Insert name: ")
-    name_in = input_str().strip()
-    print("Insert surname: ")
-    surname_in = input_str().strip()
-    print("Insert age: ")
-    age_in = input_int()
-    print("Insert gender [M or F]: ")
-    gender_in = input_str('M', 'F').strip()
-
-    return [name_in, surname_in, age_in, gender_in]
-
-
 def input_int():
-    """ add docstring """
+    """Returns given integer number, otherwise displays an error message."""
     while True:
         try:
             input_data = int(input())
@@ -37,7 +28,14 @@ def input_int():
 
 
 def input_str(option1=None, option2=None):
-    """ add docstring """
+    """Returns a string variable taken from the user, otherwise displays an error message.
+    If option1 and option2 are specified, the function returns one of those two options,
+    otherwise it displays an error message.
+
+            Parameters:
+                option1: First option to choose of type string.
+                option2: Second option to choose of type string.
+    """
     while True:
         input_data = input()
         if option1 is None and option2 is None:
