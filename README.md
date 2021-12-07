@@ -38,7 +38,7 @@ python main.py
 
 When you start the program you will see the menu shown below:
 
-```python
+```terminal
 What would like to do?
 1 - Add new person
 2 - Rename existing person
@@ -47,7 +47,7 @@ Insert option:
 ```
 You should now choose what you want to do next. Once you have selected option 1, you will be asked to select the person to add. You have three options to choose from.
 
-```python
+```terminal
 Select the person you want to add to the base:
 1 - Employee
 2 - Student
