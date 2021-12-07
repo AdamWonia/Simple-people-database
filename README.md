@@ -1,4 +1,4 @@
-# Employee management with Flask framework
+# Simple people database with Python
 
 ## Description
 
