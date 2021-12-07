@@ -39,7 +39,11 @@ if __name__ == "__main__":
             # Saving Employee details to file:
             print("Do you want to save the person's data to a file? [Y or N]")
             save_option = input_str('Y', 'N')
-            employee.save_employee_to_file(save_option)
+            if save_option == 'Y':
+                print("Choose a directory to save: ")
+                print("Note: A folder and file will be created with the person data")
+                time.sleep(2)
+                employee.save_employee_to_file(save_option)
 
         if chosen_person == 2:
             print("Chosen option: {} - {}".format(chosen_person, "Student"))
@@ -52,7 +56,11 @@ if __name__ == "__main__":
             # Saving Employee details to file:
             print("Do you want to save the person's data to a file? [Y or N]")
             save_option = input_str('Y', 'N')
-            student.save_student_to_file(save_option)
+            if save_option == 'Y':
+                print("Choose a directory to save: ")
+                print("Note: A folder and file will be created with the person data")
+                time.sleep(2)
+                student.save_student_to_file(save_option)
 
         if chosen_person == 3:
             print("Chosen option: {} - {}".format(chosen_person, "Child"))
@@ -65,7 +73,11 @@ if __name__ == "__main__":
             # Saving Employee details to file:
             print("Do you want to save the person's data to a file? [Y or N]")
             save_option = input_str('Y', 'N')
-            child.save_child_to_file(save_option)
+            if save_option == 'Y':
+                print("Choose a directory to save: ")
+                print("Note: A folder and file will be created with the person data")
+                time.sleep(2)
+                child.save_child_to_file(save_option)
 
     if start_option == 2:
         print("Chosen option: {} - {}".format(start_option, "Rename existing person"))

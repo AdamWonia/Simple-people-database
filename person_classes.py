@@ -34,79 +34,72 @@ class Person:
 
     def _save_details_to_file(self, save_option, data_to_write):
         """ Method allows to save the person details into chosen directory. """
-        if save_option == 'Y':
-            print("Choose a directory to save: ")
-            print("Note: A folder and file will be created with the person data")
-            time.sleep(2)
-            # Choosing directory:
-            try:
-                chosen_path = fd.askdirectory()
-                if chosen_path == '':
-                    raise FileNotFoundError
-                print("Chosen path: " + chosen_path + "\n")
-                # Create person folder in chosen directory:
-                person_dir = self.name + " " + self.surname
-                person_dir_path = chosen_path + "/" + person_dir
-                # Create folder and file.txt if not exist:
-                if not os.path.isdir(person_dir_path):
+        # Choosing directory:
+        try:
+            chosen_path = fd.askdirectory()
+            if chosen_path == '':
+                raise FileNotFoundError
+            print("Chosen path: " + chosen_path + "\n")
+            # Create person folder in chosen directory:
+            person_dir = self.name + " " + self.surname
+            person_dir_path = chosen_path + "/" + person_dir
+            # Create folder and file.txt if not exist:
+            if not os.path.isdir(person_dir_path):
+                os.makedirs(person_dir_path)
+                file_path = person_dir_path + "/person_details.txt"
+                f = open(file_path, "w")
+                # Insert person details into file:
+                for data in data_to_write:
+                    f.write(data + "\n")
+                print("Folder: '" + person_dir + "' and file 'person_details.txt' created!")
+                f.close()
+            else:
+                # Choose what to do if folder exists
+                print("Folder exist! Do you want to overwrite it? [Y or N]")
+                print("If you select 'N' a folder with a suffix of '_' will be created")
+                folder_option = input_str('Y', 'N')
+                # Override data in folder option:
+                if folder_option == 'Y':
+                    # Remove all files in path:
+                    file_list = os.listdir(person_dir_path)
+                    for element in file_list:
+                        os.remove(person_dir_path + "/" + element)
+                    # Delete existing folder after cleaning it:
+                    os.rmdir(person_dir_path)
+                    # Create new folder with person details:
+                    os.makedirs(person_dir_path)
+                    # Create folder and file.txt:
+                    file_path = person_dir_path + "/person_details.txt"
+                    f = open(file_path, "w")
+                    # Insert person details into file:
+                    for data in data_to_write:
+                        f.write(data + "\n")
+
+                    print("Folder: '" + person_dir + "' and file 'person_details.txt' created!")
+                    f.close()
+                    exit()
+                # Otherwise create folder with suffix:
+                if folder_option == 'N':
+                    # Create folder with suffix '_' and file.txt:
+                    look_path = os.path.dirname(person_dir_path)
+                    list_files = os.listdir(look_path)
+                    # Find a specific folder name and add a suffix to its name:
+                    for act_dir in list_files:
+                        if act_dir == person_dir:
+                            person_dir_path = look_path + "/" + act_dir + '_'
+
                     os.makedirs(person_dir_path)
                     file_path = person_dir_path + "/person_details.txt"
                     f = open(file_path, "w")
                     # Insert person details into file:
                     for data in data_to_write:
                         f.write(data + "\n")
-                    print("Folder: '" + person_dir + "' and file 'person_details.txt' created!")
+
+                    print("Folder: '" + os.path.basename(
+                        person_dir_path) + "' and file 'person_details.txt' created!")
                     f.close()
-                else:
-                    # Choose what to do if folder exists
-                    print("Folder exist! Do you want to overwrite it? [Y or N]")
-                    print("If you select 'N' a folder with a suffix of '_' will be created")
-                    folder_option = input_str('Y', 'N')
-                    # Override data in folder option:
-                    if folder_option == 'Y':
-                        # Remove all files in path:
-                        file_list = os.listdir(person_dir_path)
-                        for element in file_list:
-                            os.remove(person_dir_path + "/" + element)
-                        # Delete existing folder after cleaning it:
-                        os.rmdir(person_dir_path)
-                        # Create new folder with person details:
-                        os.makedirs(person_dir_path)
-                        # Create folder and file.txt:
-                        file_path = person_dir_path + "/person_details.txt"
-                        f = open(file_path, "w")
-                        # Insert person details into file:
-                        for data in data_to_write:
-                            f.write(data + "\n")
-
-                        print("Folder: '" + person_dir + "' and file 'person_details.txt' created!")
-                        f.close()
-                        exit()
-                    # Otherwise create folder with suffix:
-                    if folder_option == 'N':
-                        # Create folder with suffix '_' and file.txt:
-                        look_path = os.path.dirname(person_dir_path)
-                        list_files = os.listdir(look_path)
-                        # Find a specific folder name and add a suffix to its name:
-                        for act_dir in list_files:
-                            if act_dir == person_dir:
-                                person_dir_path = look_path + "/" + act_dir + '_'
-
-                        os.makedirs(person_dir_path)
-                        file_path = person_dir_path + "/person_details.txt"
-                        f = open(file_path, "w")
-                        # Insert person details into file:
-                        for data in data_to_write:
-                            f.write(data + "\n")
-
-                        print("Folder: '" + os.path.basename(
-                            person_dir_path) + "' and file 'person_details.txt' created!")
-                        f.close()
-                        exit()
-            except FileNotFoundError:
-                print("File not found, please try again")
-        else:
-            exit()
+        except FileNotFoundError:
+            print("File not found, please try again")
 
 
 class Employee(Person):
